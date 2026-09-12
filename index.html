@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zenka Woolliscroft | Portfolio</title>
+  <meta name="description" content="Personal portfolio of Zenka Woolliscroft, software developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="navbar">
+      <a href="#" class="logo">Zenka Woolliscroft</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
+
+    <div class="hero" id="about">
+      <div class="hero-content">
+        <p class="hero-greeting">Hi, my name is</p>
+        <h1 class="hero-name">Zenka Woolliscroft</h1>
+        <h2 class="hero-title">Full-Stack Software Developer</h2>
+        <p class="hero-bio">
+          I am a Naval Architect with 10 years of engineering experience. I enjoy
+          creating tools that automate analyses and help engineers' work more
+          efficient.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+          <a href="mailto:alex.morgan@example.com" aria-label="Email">Email</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="projects" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">A few things I've built recently</p>
+
+      <div class="project-grid" id="projectGrid">
+        <!-- Project cards are rendered by js/script.js -->
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-subtitle">
+        Have a project in mind or just want to say hi? My inbox is always open.
+      </p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+          <span class="error-message" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          <span class="error-message" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."
+            required></textarea>
+          <span class="error-message" id="messageError"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Zenka Woolliscroft. All rights reserved.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
