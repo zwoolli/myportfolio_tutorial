@@ -95,6 +95,9 @@ function initThemeToggle() {
   const themeToggle = document.getElementById("themeToggle");
   if (!themeToggle) return;
 
+  const iconEl = themeToggle.querySelector(".theme-toggle-icon");
+  const textEl = themeToggle.querySelector(".theme-toggle-text");
+
   const storedTheme = localStorage.getItem("portfolio-theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const initialTheme = storedTheme || (prefersDark ? "dark" : "light");
@@ -102,19 +105,39 @@ function initThemeToggle() {
   applyTheme(initialTheme);
 
   themeToggle.addEventListener("click", () => {
-    const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+    const currentTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
     const nextTheme = currentTheme === "dark" ? "light" : "dark";
     applyTheme(nextTheme);
     localStorage.setItem("portfolio-theme", nextTheme);
   });
 
+  // Update theme dynamically if user preference changes at OS level (and no explicit storage override)
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (!localStorage.getItem("portfolio-theme")) {
+      applyTheme(e.matches ? "dark" : "light");
+    }
+  });
+
   function applyTheme(theme) {
-    if (theme === "dark") {
+    const isDark = theme === "dark";
+    const targetTheme = isDark ? "light" : "dark";
+    const label = `Switch to ${targetTheme} theme`;
+
+    if (isDark) {
       document.documentElement.setAttribute("data-theme", "dark");
-      themeToggle.textContent = "☀️";
     } else {
       document.documentElement.removeAttribute("data-theme");
-      themeToggle.textContent = "🌙";
+    }
+
+    themeToggle.setAttribute("aria-label", label);
+    themeToggle.setAttribute("title", label);
+
+    if (iconEl) {
+      iconEl.textContent = isDark ? "☀️" : "🌙";
+    }
+
+    if (textEl) {
+      textEl.textContent = label;
     }
   }
 }
